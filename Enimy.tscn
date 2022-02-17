@@ -1,0 +1,130 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://qb_body.png" type="Texture" id=1]
+[ext_resource path="res://qb_tail.png" type="Texture" id=2]
+[ext_resource path="res://Enimy.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Skeleton/tail:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 75, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Skeleton/tail:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 47, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Skeleton/tail:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -116.225, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "shake"
+length = 2.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Skeleton/tail:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -31.7257, -0.25, 0, 0.25, 0, -116.225, -0.25, 0, 0.25, 0, -28.797, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Skeleton/tail:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 75, -0.25, 0, 0.25, 0, 75, -0.25, 0, 0.25, 0, 75, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Skeleton/tail:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 47, -0.25, 0, 0.25, 0, 47, -0.25, 0, 0.25, 0, 47, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2 )
+}
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 28.0
+
+[node name="Enimy" type="RigidBody2D" groups=["mobs"]]
+position = Vector2( -28, -3 )
+gravity_scale = 0.0
+script = ExtResource( 3 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 64.5, 38.5 )
+scale = Vector2( 3.55, 3.55 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="QbTail" type="Polygon2D" parent="Node2D"]
+texture = ExtResource( 2 )
+skeleton = NodePath("../../Skeleton")
+polygon = PoolVector2Array( 66.302, 7.87746, 63.1291, 11.488, 61.488, 15.4267, 61.8162, 27.0241, 62.2538, 28.1182, 72.5383, 33.4792, 71.7724, 48.3589, 73.9606, 49.6718, 79.2122, 48.7965, 83.2604, 48.7965, 91.3567, 42.5602, 91.3567, 30.4158, 83.2604, 19.3654, 83.8074, 14.1138, 94.7484, 14.3326, 94.4201, 12.8009, 86.7615, 6.12691, 80.8534, 4.15755, 69.8031, 4.814 )
+uv = PoolVector2Array( 66.302, 7.87746, 63.1291, 11.488, 61.488, 15.4267, 61.8162, 27.0241, 62.2538, 28.1182, 72.5383, 33.4792, 71.7724, 48.3589, 73.9606, 49.6718, 79.2122, 48.7965, 83.2604, 48.7965, 91.3567, 42.5602, 91.3567, 30.4158, 83.2604, 19.3654, 83.8074, 14.1138, 94.7484, 14.3326, 94.4201, 12.8009, 86.7615, 6.12691, 80.8534, 4.15755, 69.8031, 4.814 )
+bones = [ "tail", PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ), "body", PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ) ]
+
+[node name="QbBody" type="Polygon2D" parent="Node2D"]
+texture = ExtResource( 1 )
+skeleton = NodePath("../../Skeleton")
+polygon = PoolVector2Array( 51.86, 13.895, 53.2823, 26.3676, 47.1554, 34.5733, 45.0766, 32.1663, 43.4354, 33.5886, 43.5449, 37.0897, 40.372, 37.1991, 39.0591, 31.4004, 33.698, 35.6674, 32.3851, 42.3414, 39.2779, 47.4836, 46.0613, 46.0613, 49.0153, 50.547, 52.2976, 46.6083, 50.4376, 43.2166, 54.9234, 37.1991, 55.361, 35.0109, 57.6586, 38.2932, 62.035, 38.4026, 59.2998, 45.2954, 59.7374, 50.3282, 53.7199, 50.4376, 53.5011, 54.0481, 58.5339, 57.1116, 77.4617, 55.6893, 79.2122, 51.9694, 73.6324, 50.1094, 73.0853, 45.9519, 76.0394, 44.4201, 78.9934, 42.1225, 81.5098, 43.4354, 83.2604, 44.2013, 83.5886, 46.4989, 84.4639, 50.3282, 87.7462, 50.6565, 90.372, 48.4683, 92.779, 45.9519, 92.8884, 42.3414, 91.2473, 40.0438, 91.2473, 37.6368, 93.7637, 36.3238, 95.5142, 34.3545, 92.779, 32.8228, 89.3873, 33.151, 86.6521, 31.7287, 80.1969, 24.1794, 78.7746, 22.9759, 78.2276, 12.6915, 72.6477, 14.8796, 68.4902, 20.2407, 64.3326, 19.1466, 61.2691, 19.5842 )
+uv = PoolVector2Array( 51.86, 13.895, 53.2823, 26.3676, 47.1554, 34.5733, 45.0766, 32.1663, 43.4354, 33.5886, 43.5449, 37.0897, 40.372, 37.1991, 39.0591, 31.4004, 33.698, 35.6674, 32.3851, 42.3414, 39.2779, 47.4836, 46.0613, 46.0613, 49.0153, 50.547, 52.2976, 46.6083, 50.4376, 43.2166, 54.9234, 37.1991, 55.361, 35.0109, 57.6586, 38.2932, 62.035, 38.4026, 59.2998, 45.2954, 59.7374, 50.3282, 53.7199, 50.4376, 53.5011, 54.0481, 58.5339, 57.1116, 77.4617, 55.6893, 79.2122, 51.9694, 73.6324, 50.1094, 73.0853, 45.9519, 76.0394, 44.4201, 78.9934, 42.1225, 81.5098, 43.4354, 83.2604, 44.2013, 83.5886, 46.4989, 84.4639, 50.3282, 87.7462, 50.6565, 90.372, 48.4683, 92.779, 45.9519, 92.8884, 42.3414, 91.2473, 40.0438, 91.2473, 37.6368, 93.7637, 36.3238, 95.5142, 34.3545, 92.779, 32.8228, 89.3873, 33.151, 86.6521, 31.7287, 80.1969, 24.1794, 78.7746, 22.9759, 78.2276, 12.6915, 72.6477, 14.8796, 68.4902, 20.2407, 64.3326, 19.1466, 61.2691, 19.5842 )
+bones = [ "tail", PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), "body", PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ) ]
+
+[node name="Skeleton" type="Skeleton2D" parent="."]
+
+[node name="tail" type="Bone2D" parent="Skeleton"]
+position = Vector2( 75, 47 )
+rotation = -2.02851
+rest = Transform2D( 0.29655, -0.955017, 0.955017, 0.29655, 75, 47 )
+default_length = 40.0
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="body" type="Bone2D" parent="Skeleton"]
+position = Vector2( 67, 52 )
+rotation = -1.57059
+rest = Transform2D( 0.000209407, -1, 1, 0.000209407, 67, 52 )
+default_length = 30.0
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "shake"
+anims/RESET = SubResource( 1 )
+anims/shake = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 64, 34 )
+shape = SubResource( 3 )
